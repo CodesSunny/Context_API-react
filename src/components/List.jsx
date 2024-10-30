@@ -1,6 +1,6 @@
 import { useEffect,useContext, useState } from "react";
 import Context from "../Context"
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import Virat from "./Virat";
 
 const khiladi=[
@@ -43,6 +43,13 @@ const khiladi=[
 
   
   const List=()=>{
+    
+  const navigate = useNavigate();
+  const seePlayer=(clickedPlayer)=>{
+  console.log("see:", clickedPlayer);
+  setPlayers(clickedPlayer);  //update state with selected player
+  navigate(`/${clickedPlayer.name}`)
+  }  
   const {players,setPlayers} = useContext(Context);
     // useContext provides an object, hence to destructure data in it use {}
 
@@ -59,8 +66,12 @@ const khiladi=[
              {
                players.map((item,index)=>(
                  <li key={index} className="w-72 h-60">
+                    <button
+                     onClick={()=>seePlayer(item,index)}
+                     className="w-full h-full">
                        <img src={`/image/${item.image}`} alt={item.name} className="w-full h-full"/>
                        <p className="font-bold bg-rose-300 py-2 text-center capitalize">{item.name} - {item.country}</p>
+                    </button>     
                   </li>
              ))
              }

@@ -10,6 +10,7 @@ import { useState,useEffect } from 'react'
 
  const App=()=>{
   const[players,setPlayers] = useState([]);
+  
   useEffect(() => {
     console.log("Players set:", players)  //array of players
 }, [players]);
@@ -22,8 +23,8 @@ import { useState,useEffect } from 'react'
           <Route path="/" element={<Dashboard/>}/>
           <Route path="/list" element={<List />}/>
           <Route path="/player" element={<Player />}/>
-          {/* <Route path="/sachin" element={<Sachin />}/> */}
-          {/* <Route path="/virat" element={<Virat/>}/> */}
+          <Route path="/sachin" element={<Sachin />}/>
+          <Route path="/virat" element={<Virat/>}/>
         </Routes>
       </BrowserRouter>
     </Context.Provider>  

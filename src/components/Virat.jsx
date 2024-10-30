@@ -1,30 +1,26 @@
-// import { useLocation } from "react-router-dom"
-import { useContext } from "react";
-
+import { useContext,useEffect} from "react";
+import Context from "../Context";
+import { Navigate } from "react-router-dom";
 
 const Virat=()=>{
-      // const location = useLocation();
-   
-    if (!players) return <p>Loading...</p>;
+    const {players}= useContext(Context)
+    console.log("virat",players);
+    
+    if (!players)
+      return <Navigate to="/list"/>
 
     return (
       <div>
-        <h1 className="bg-gray-300 text-rose-700 font-bold text-center h-24 py-6 text-4xl"> Hello bhaiya</h1>
-       
-        {
-          players.map((item)=>(
-            item.name === "virat" ? 
-            <div key={item.name}> 
-              <p>{item.name}</p>
-              <p>{item.country}</p>
+        <h1 className="bg-gray-300 text-rose-700 font-bold text-center h-24 py-6 text-4xl"> This is Virat Kohli</h1>
+            <div className="bg-gray-300 min-h-screen flex justify-center items-center gap-20">
+              <img className="w-6/12 border rounded h-96" src={`/image/${players.image}`} alt={players.name}/>   
+              <div className="flex flex-col gap-16 capitalize text-xl text-purple-900">
+                <p className="font-semibold ">Name: {players.name} </p>
+                <p className="font-semibold "> Country: {players.country}</p>
+                <p className="font-semibold ">Game:  {players.game}</p>
+                <p className="font-semibold ">Popular:  {players.popular == true ?"True" : "False"}</p>
+              </div>
             </div>
-              : 
-            <p>expected player data not found</p>
-
-          )
-          )
-        }
-        
       </div>
     )
   }

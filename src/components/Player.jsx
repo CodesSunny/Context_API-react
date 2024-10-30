@@ -1,14 +1,18 @@
+import { useContext } from "react"
+import Context from "../Context"
 import { useEffect } from "react"
 
 const Player=()=>{
+  const {players}= useContext(Context)
+
      useEffect(()=>{
-      // console.log(players);
+      console.log(players);
       
      },[]) 
 
       return (
         <div>
-          <h1 className="bg-gray-300 text-rose-700 font-bold text-center h-24 py-6 text-4xl"> Hello bhaiya</h1>
+          <h1 className="bg-gray-300 text-rose-700 font-bold text-center h-24 py-6 text-4xl"> Hello Player</h1>
           <ul  className="grid gap-2 md:grid-cols-5 grid-cols-2 bg-rose-200">
              {
               players.map((item,index)=>(
